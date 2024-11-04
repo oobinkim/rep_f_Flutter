@@ -1,4 +1,4 @@
-import '../models/morph_models.dart';
+import 'morph_models.dart';
 
 class MorphManager {
   static final MorphManager _instance = MorphManager._internal(); //싱글톤

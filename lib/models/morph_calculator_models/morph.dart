@@ -1,4 +1,4 @@
-import '../models/inheritance_type.dart';
+import 'inheritance_type.dart';
 
 class Morph {
   final String name;

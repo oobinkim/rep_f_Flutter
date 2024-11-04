@@ -1,4 +1,4 @@
-import '../models/morph_models.dart';
+import '../models/morph_calculator_models/morph_models.dart';
 import '../services/morph_calculator_services.dart';
 /*
 * 모프 계산기 로직
