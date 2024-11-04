@@ -1,5 +1,5 @@
 import '../models/morph_calculator_models/morph_models.dart';
-import '../services/morph_calculator_services.dart';
+import '../services/morph_calculator_services/morph_calculator_services.dart';
 import 'package:flutter/foundation.dart';
 
 class MorphCalculatorViewModel extends ChangeNotifier {

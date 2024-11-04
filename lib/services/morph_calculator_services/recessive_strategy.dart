@@ -1,5 +1,5 @@
-import '../models/morph_calculator_models/morph_models.dart';
-import '../services/morph_calculator_services.dart';
+import '../../models/morph_calculator_models/morph_models.dart';
+import 'morph_calculator_services.dart';
 /*
 *열성 계산
  */
