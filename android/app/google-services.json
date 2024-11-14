@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "300527337363",
+    "project_id": "rep-f-8b018",
+    "storage_bucket": "rep-f-8b018.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300527337363:android:576e05d1f169ce16b7f266",
+        "android_client_info": {
+          "package_name": "com.repf.repf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChV2bRvbf_ZdMNXtJm03jWy_OfvKcYb14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
