@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'views/registration_view.dart';
+import 'views/splash_view.dart';
+import 'viewmodels/splash_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -20,6 +23,7 @@ void main() async {
         ),
       );
     } else {
+      // iOS와 Android 환경은 기본 설정 사용
       await Firebase.initializeApp();
     }
     print('Firebase 초기화 성공');
@@ -35,13 +39,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '회원가입',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SplashViewModel()),
+      ],
+      child: MaterialApp(
+        title: 'Rep : f',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        initialRoute: '/splash',
+        routes: {
+          '/splash': (context) => const SplashView(),
+          '/registration': (context) => RegistrationView(),
+        },
       ),
-      home:  RegistrationView(), // 초기 화면을 RegistrationView로 설정
     );
   }
 }
