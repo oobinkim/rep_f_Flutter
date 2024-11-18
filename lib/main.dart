@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'views/morph_calculator_view.dart';
+import 'views/registration_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -36,12 +36,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Morph Calculator',
+      title: '회원가입',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MorphCalculatorView(), // 초기 화면을 MorphCalculatorView로 설정
+      home:  RegistrationView(), // 초기 화면을 RegistrationView로 설정
     );
   }
 }
