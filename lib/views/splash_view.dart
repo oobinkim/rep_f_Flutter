@@ -58,7 +58,7 @@ class SplashView extends StatelessWidget {
                           text: "Google로 시작하기",
                           isEnabled: true,
                           onPressed: () {
-                            // 구글 로그인 동작 추가
+                            // TODO: 구글 로그인 추가하기
                           },
                           enabledColor: AppColors.white,
                           disabledColor: AppColors.white,
