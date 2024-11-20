@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 
 class SplashViewModel extends ChangeNotifier {
-  Future<void> navigateToNextScreen(BuildContext context) async {
-    await Future.delayed(const Duration(seconds: 5));
-    Navigator.pushReplacementNamed(context, '/registration'); // 회원가입 화면으로 이동
+  bool _showButtons = false;
+
+  bool get showButtons => _showButtons;
+
+  void showButtonsAfterDelay() async {
+    await Future.delayed(const Duration(seconds: 2));
+    _showButtons = true;
+    notifyListeners();
+  }
+
+  void navigateToAgreement(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/agreement');
   }
 }

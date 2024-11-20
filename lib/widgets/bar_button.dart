@@ -2,33 +2,44 @@ import 'package:flutter/material.dart';
 
 class BarButton extends StatelessWidget {
   final String text;
-  final VoidCallback? onPressed;
   final bool isEnabled;
+  final VoidCallback? onPressed;
+  final Color enabledColor;
+  final Color disabledColor;
+  final Color enabledTextColor;
+  final Color disabledTextColor;
 
   const BarButton({
     Key? key,
     required this.text,
-    required this.onPressed,
-    this.isEnabled = true,
+    required this.isEnabled,
+    this.onPressed,
+    required this.enabledColor,
+    required this.disabledColor,
+    required this.enabledTextColor,
+    required this.disabledTextColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: isEnabled ? onPressed : null,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: isEnabled ? Colors.green : Colors.grey,
-        minimumSize: const Size(double.infinity, 50),
-        shape: RoundedRectangleBorder(
+    return GestureDetector(
+      onTap: isEnabled ? onPressed : null,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        decoration: BoxDecoration(
+          color: isEnabled ? enabledColor : disabledColor,
           borderRadius: BorderRadius.circular(8),
         ),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: isEnabled ? Colors.black : Colors.white,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: isEnabled ? enabledTextColor : disabledTextColor,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );
