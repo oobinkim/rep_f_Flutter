@@ -74,6 +74,7 @@ class RegistrationView extends StatelessWidget {
               SizedBox(height: 8),
               OutlinedTextField(
                 placeholder: "이름", // 이름 플레이스홀더
+                allowNumbers: false,
                 keyboardType: TextInputType.text,
                 onChanged: (value) {
                   viewModel.name = value; // 이름 저장
@@ -106,6 +107,7 @@ class RegistrationView extends StatelessWidget {
                     child: OutlinedTextField(
                       placeholder: "생년월일 앞 6자리", // 주민등록번호 앞 6자리 플레이스홀더
                       keyboardType: TextInputType.number,
+                      allowNumbers: true,
                       maxLength: 6,
                       onChanged: (value) {
                         viewModel.idNumber = value;
@@ -132,6 +134,7 @@ class RegistrationView extends StatelessWidget {
                     child: OutlinedTextField(
                       placeholder: "", // 플레이스홀더 없음
                       keyboardType: TextInputType.number,
+                      allowNumbers: true,
                       maxLength: 1,
                       onChanged: (value) {
                         if (value == "1" || value == "3") {

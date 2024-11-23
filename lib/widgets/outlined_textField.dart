@@ -8,6 +8,7 @@ class OutlinedTextField extends StatefulWidget {
   final int maxLength; // 최대 입력 길이
   final ValueChanged<String>? onChanged; // 값 변경 콜백
   final bool obscureText; // 텍스트 가림 여부
+  final bool allowNumbers; // 숫자 허용 여부
 
   const OutlinedTextField({
     Key? key,
@@ -16,6 +17,7 @@ class OutlinedTextField extends StatefulWidget {
     this.maxLength = 0,
     this.onChanged,
     this.obscureText = false,
+    this.allowNumbers = false, // 기본값: 숫자 비허용
   }) : super(key: key);
 
   @override
@@ -62,26 +64,11 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
       maxLength: widget.maxLength > 0 ? widget.maxLength : null,
       obscureText: widget.obscureText,
       inputFormatters: [
-        KoreanEnglishTextInputFormatter(), // 사용자 정의 필터링 추가
+        widget.allowNumbers
+            ? FilteringTextInputFormatter.allow(RegExp(r'[0-9]')) // 숫자만 허용
+            : FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Zㄱ-ㅎ가-힣]')), // 한글 및 영어만 허용
       ],
       onChanged: widget.onChanged,
     );
-  }
-}
-
-class KoreanEnglishTextInputFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    // 한글 및 영어만 허용하는 정규식
-    final regex = RegExp(r'^[a-zA-Zㄱ-ㅎ가-힣]*$');
-
-    // 새 텍스트가 정규식에 맞으면 그대로 반환
-    if (regex.hasMatch(newValue.text)) {
-      return newValue;
-    }
-
-    // 정규식에 맞지 않으면 이전 텍스트를 유지
-    return oldValue;
   }
 }
