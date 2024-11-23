@@ -44,6 +44,10 @@ class RegistrationViewModel extends ChangeNotifier {
     }
   }
 
+  void navigateToAgreement(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/agreement');
+  }
+
   // Firestore에 데이터 저장
   Future<void> register(String uid, String email, String userType) async {
     isLoading = true;
