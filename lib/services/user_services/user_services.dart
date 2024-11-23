@@ -23,7 +23,6 @@ class UserService {
       // Firestore에 사용자 정보 저장
       final newUser = UserModel(
         uid: userCredential.user!.uid,
-        email: email,
         userName: userName,
         userType: userType,
         createdAt: DateTime.now(),
