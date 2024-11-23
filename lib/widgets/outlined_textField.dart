@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../share/app_color.dart';
+
 class OutlinedTextField extends StatefulWidget {
   final String placeholder; // 플레이스홀더 텍스트
   final TextInputType keyboardType; // 키보드 유형
@@ -21,16 +23,14 @@ class OutlinedTextField extends StatefulWidget {
 }
 
 class _OutlinedTextFieldState extends State<OutlinedTextField> {
-  late TextEditingController _controller; // 텍스트 필드 컨트롤러
+  late TextEditingController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController();
-
-    // 상태 변경 감지
     _controller.addListener(() {
-      setState(() {}); // 텍스트 상태가 변경될 때 위젯 갱신
+      setState(() {});
     });
   }
 
@@ -45,8 +45,8 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
     return TextField(
       controller: _controller,
       decoration: InputDecoration(
-        hintText: _controller.text.isEmpty ? widget.placeholder : null, // 입력 전 플레이스홀더 표시
-        hintStyle: TextStyle(color: AppColors.lightGray), // 플레이스홀더 스타일
+        hintText: _controller.text.isEmpty ? widget.placeholder : null,
+        hintStyle: TextStyle(color: AppColors.lightGray),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.lightGray, width: 1.0),
           borderRadius: BorderRadius.circular(8.0),
@@ -55,13 +55,33 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
           borderSide: BorderSide(color: AppColors.lightGray, width: 2.0),
           borderRadius: BorderRadius.circular(8.0),
         ),
-        counterText: "", // 최대 길이 표시 제거
+        counterText: "",
       ),
       style: TextStyle(color: Colors.white),
       keyboardType: widget.keyboardType,
-      maxLength: widget.maxLength > 0 ? widget.maxLength : null, // 0이면 길이 제한 없음
+      maxLength: widget.maxLength > 0 ? widget.maxLength : null,
       obscureText: widget.obscureText,
+      inputFormatters: [
+        KoreanEnglishTextInputFormatter(), // 사용자 정의 필터링 추가
+      ],
       onChanged: widget.onChanged,
     );
+  }
+}
+
+class KoreanEnglishTextInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    // 한글 및 영어만 허용하는 정규식
+    final regex = RegExp(r'^[a-zA-Zㄱ-ㅎ가-힣]*$');
+
+    // 새 텍스트가 정규식에 맞으면 그대로 반환
+    if (regex.hasMatch(newValue.text)) {
+      return newValue;
+    }
+
+    // 정규식에 맞지 않으면 이전 텍스트를 유지
+    return oldValue;
   }
 }

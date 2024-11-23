@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodels/registration_viewmodel.dart';
 import '../widgets/bar_button.dart';
-import'../widgets/outlined_textField.dart';
+import '../widgets/outlined_textField.dart';
+import 'package:flutter/services.dart';
 import '../share/app_color.dart';
+
 class RegistrationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,6 @@ class RegistrationView extends StatelessWidget {
   }
 
   // Step 1: 본인 확인
-
   Widget buildPersonalInfoStep(BuildContext context, RegistrationViewModel viewModel) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -50,7 +51,11 @@ class RegistrationView extends StatelessWidget {
           SizedBox(height: 20),
           Text(
             "본인 확인이 필요해요",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.white),
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: AppColors.white,
+            ),
           ),
           SizedBox(height: 24),
 
@@ -60,7 +65,11 @@ class RegistrationView extends StatelessWidget {
             children: [
               Text(
                 "이름",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.white),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.white,
+                ),
               ),
               SizedBox(height: 8),
               OutlinedTextField(
@@ -68,6 +77,7 @@ class RegistrationView extends StatelessWidget {
                 keyboardType: TextInputType.text,
                 onChanged: (value) {
                   viewModel.name = value; // 이름 저장
+                  viewModel.notifyListeners(); // 상태 갱신
                 },
               ),
             ],
@@ -80,7 +90,11 @@ class RegistrationView extends StatelessWidget {
             children: [
               Text(
                 "주민등록번호",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppColors.white),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.white,
+                ),
               ),
               SizedBox(height: 8),
               Row(
@@ -94,9 +108,8 @@ class RegistrationView extends StatelessWidget {
                       keyboardType: TextInputType.number,
                       maxLength: 6,
                       onChanged: (value) {
-                        if (value.length == 6) {
-                          viewModel.idNumber = value; // 생년월일 저장
-                        }
+                        viewModel.idNumber = value;
+                        viewModel.notifyListeners(); // 상태 갱신
                       },
                     ),
                   ),
@@ -105,7 +118,11 @@ class RegistrationView extends StatelessWidget {
                   // "-" 텍스트
                   Text(
                     "-",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.white),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.white,
+                    ),
                   ),
                   SizedBox(width: 8),
 
@@ -118,22 +135,22 @@ class RegistrationView extends StatelessWidget {
                       maxLength: 1,
                       onChanged: (value) {
                         if (value == "1" || value == "3") {
-                          viewModel.gender = "M"; // 남자
+                          viewModel.gender = "M";
                         } else if (value == "2" || value == "4") {
-                          viewModel.gender = "F"; // 여자
+                          viewModel.gender = "F";
                         } else {
-                          viewModel.gender = ""; // 잘못된 입력
+                          viewModel.gender = "";
                         }
+                        viewModel.notifyListeners(); // 상태 갱신
                       },
                     ),
                   ),
                   SizedBox(width: 16),
 
-                  // 동그라미 6개
                   Row(
                     children: List.generate(6, (_) {
                       return Padding(
-                        padding: const EdgeInsets.only(left: 4.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 2.0),
                         child: CircleAvatar(
                           radius: 5, // 동그라미 크기
                           backgroundColor: AppColors.white, // 동그라미 색상
@@ -146,6 +163,8 @@ class RegistrationView extends StatelessWidget {
             ],
           ),
           Spacer(flex: 5),
+
+          // 다음 버튼
           BarButton(
             text: "다음",
             isEnabled: viewModel.name.isNotEmpty &&
@@ -161,13 +180,13 @@ class RegistrationView extends StatelessWidget {
             enabledTextColor: AppColors.black,
             disabledTextColor: AppColors.black,
           ),
-          Spacer(flex: 1,)
+          Spacer(flex: 1),
         ],
       ),
     );
   }
-}
-  // Step 2: 휴대폰 번호 입력
+
+// Step 2: 휴대폰 번호 입력
   Widget buildPhoneNumberStep(BuildContext context, RegistrationViewModel viewModel) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -315,3 +334,4 @@ class RegistrationView extends StatelessWidget {
       ),
     );
   }
+}

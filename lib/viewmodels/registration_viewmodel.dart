@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../models/user_models/user_models.dart';
 
 class RegistrationViewModel extends ChangeNotifier {
   int currentStep = 0; // 현재 단계
@@ -44,20 +45,29 @@ class RegistrationViewModel extends ChangeNotifier {
   }
 
   // Firestore에 데이터 저장
-  Future<void> register() async {
+  Future<void> register(String uid, String email, String userType) async {
     isLoading = true;
     notifyListeners();
 
     try {
-      await FirebaseFirestore.instance.collection('users').add({
-        'name': name,
-        'idNumber': idNumber,
-        'gender': gender,
-        'phoneNumber': phoneNumber,
-        'carrier': carrier,
-        'authCode': authCode,
-        'createdAt': FieldValue.serverTimestamp(),
-      });
+      // UserModel 객체 생성
+      final user = UserModel(
+        uid: uid,
+        userName: name,
+        userType: userType,
+        idNumber: idNumber,
+        gender: gender,
+        phoneNumber: phoneNumber,
+        carrier: carrier,
+        createdAt: DateTime.now(),
+      );
+
+      // Firestore에 저장
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .set(user.toFirestore());
+
       errorMessage = '';
     } catch (e) {
       errorMessage = "회원가입 중 오류가 발생했습니다: ${e.toString()}";
