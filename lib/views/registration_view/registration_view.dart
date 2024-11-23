@@ -15,12 +15,18 @@ class RegistrationView extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: AppColors.black,
               elevation: 0,
-              leading: viewModel.currentStep > 0
-                  ? IconButton(
+              leading: IconButton(
                 icon: Icon(Icons.arrow_back, color: AppColors.white),
-                onPressed: viewModel.previousStep,
-              )
-                  : null,
+                onPressed: () {
+                  if (viewModel.currentStep == 0) {
+                    // 첫 화면에서는 Agreement로 이동
+                    viewModel.navigateToAgreement(context);
+                  } else {
+                    // 다른 화면에서는 이전 단계로 이동
+                    viewModel.previousStep();
+                  }
+                },
+              ),
             ),
             backgroundColor: AppColors.black,
             body: PageView(
