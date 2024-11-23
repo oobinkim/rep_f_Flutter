@@ -6,7 +6,7 @@ class SplashViewModel extends ChangeNotifier {
   bool get showButtons => _showButtons;
 
   void showButtonsAfterDelay() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     _showButtons = true;
     notifyListeners();
   }

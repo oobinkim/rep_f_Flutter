@@ -9,7 +9,6 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // SplashViewModel의 showButtonsAfterDelay 호출
     Future.microtask(() =>
         Provider.of<SplashViewModel>(context, listen: false).showButtonsAfterDelay());
 
@@ -29,15 +28,17 @@ class SplashView extends StatelessWidget {
             ),
           ),
           // 버튼 레이어
-          Align(
-            alignment: Alignment.bottomCenter,
+          Positioned(
+            bottom: 40, // 하단에서 40px 위로 위치 조정
+            left: 0,
+            right: 0,
             child: Consumer<SplashViewModel>(
               builder: (context, viewModel, child) {
                 return AnimatedOpacity(
                   opacity: viewModel.showButtons ? 1.0 : 0.0, // showButtons에 따라 투명도 변경
                   duration: const Duration(milliseconds: 500),
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [

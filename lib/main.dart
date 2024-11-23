@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'views/agreement_view.dart';
 import 'views/splash_view.dart';
+import 'views/registration_view.dart';
 import 'viewmodels/splash_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/splash': (context) => const SplashView(),
           '/agreement': (context) => AgreementView(),
+          '/registration': (context) => RegistrationView(),
         },
       ),
     );
