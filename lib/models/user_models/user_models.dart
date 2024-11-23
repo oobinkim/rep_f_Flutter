@@ -4,7 +4,7 @@ class UserModel {
   final String uid; // 사용자 고유 ID
   final String userName; // 사용자 이름
   final String userType; // 사용자 유형 (regular, breeder 등)
-  final String idNumber; // 생년월일 앞 6자리
+  final String birthDate; // 생년월일 앞 6자리
   final String gender; // 성별
   final String phoneNumber; // 전화번호
   final String carrier; // 통신사
@@ -14,7 +14,7 @@ class UserModel {
     required this.uid,
     required this.userName,
     required this.userType,
-    required this.idNumber,
+    required this.birthDate,
     required this.gender,
     required this.phoneNumber,
     required this.carrier,
@@ -27,7 +27,7 @@ class UserModel {
       uid: uid,
       userName: data['userName'] ?? '',
       userType: data['userType'] ?? 'regular',
-      idNumber: data['idNumber'] ?? '',
+      birthDate: data['birthDate'] ?? '',
       gender: data['gender'] ?? '',
       phoneNumber: data['phoneNumber'] ?? '',
       carrier: data['carrier'] ?? '',
@@ -40,7 +40,7 @@ class UserModel {
     return {
       'userName': userName,
       'userType': userType,
-      'idNumber': idNumber,
+      'birthDate': birthDate,
       'gender': gender,
       'phoneNumber': phoneNumber,
       'carrier': carrier,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../models/user_models/user_models.dart';
 
 class RegistrationViewModel extends ChangeNotifier {
   int currentStep = 0; // 현재 단계
@@ -8,7 +7,7 @@ class RegistrationViewModel extends ChangeNotifier {
 
   // 사용자 입력 데이터
   String name = '';
-  String idNumber = ''; // 생년월일 앞 6자리
+  String birthDate = ''; // 생년월일 앞 6자리
   String gender = ''; // 성별 (M: 남자, F: 여자)
   String phoneNumber = '';
   String carrier = '';
@@ -44,40 +43,52 @@ class RegistrationViewModel extends ChangeNotifier {
     }
   }
 
-  void navigateToAgreement(BuildContext context) {
-    Navigator.pushReplacementNamed(context, '/agreement');
-  }
-
-  // Firestore에 데이터 저장
-  Future<void> register(String uid, String email, String userType) async {
+  // Firestore에 기본 데이터 저장
+  Future<void> register(String uid) async {
     isLoading = true;
     notifyListeners();
 
     try {
-      // UserModel 객체 생성
-      final user = UserModel(
-        uid: uid,
-        userName: name,
-        userType: userType,
-        idNumber: idNumber,
-        gender: gender,
-        phoneNumber: phoneNumber,
-        carrier: carrier,
-        createdAt: DateTime.now(),
-      );
+      // Firestore에 기본 데이터 저장
+      final userData = {
+        'userName': name,
+        'birthDate': birthDate,
+        'gender': gender,
+        'phoneNumber': phoneNumber,
+        'carrier': carrier,
+        'createdAt': FieldValue.serverTimestamp(),
+      };
 
-      // Firestore에 저장
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .set(user.toFirestore());
+      await FirebaseFirestore.instance.collection('users').doc(uid).set(userData);
 
       errorMessage = '';
+      print("사용자 등록 성공: $userData");
     } catch (e) {
       errorMessage = "회원가입 중 오류가 발생했습니다: ${e.toString()}";
+      print(errorMessage);
     } finally {
       isLoading = false;
       notifyListeners();
     }
   }
+
+  // Firestore에 userType 업데이트
+  Future<void> updateUserType(String uid, String userType) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .update({'userType': userType});
+
+      print("사용자 타입 업데이트 성공: $userType");
+    } catch (e) {
+      print("사용자 타입 업데이트 실패: ${e.toString()}");
+    }
+  }
+
+  void navigateToAgreement(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/agreement');
+  }
 }
+
+

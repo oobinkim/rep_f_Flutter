@@ -73,7 +73,7 @@ class Step1PersonalInfo extends StatelessWidget {
                       allowNumbers: true,
                       maxLength: 6,
                       onChanged: (value) {
-                        viewModel.idNumber = value;
+                        viewModel.birthDate = value;
                         viewModel.notifyListeners();
                       },
                     ),
@@ -128,10 +128,10 @@ class Step1PersonalInfo extends StatelessWidget {
           BarButton(
             text: "다음",
             isEnabled: viewModel.name.isNotEmpty &&
-                viewModel.idNumber.length == 6 &&
+                viewModel.birthDate.length == 6 &&
                 viewModel.gender.isNotEmpty,
             onPressed: viewModel.name.isNotEmpty &&
-                viewModel.idNumber.length == 6 &&
+                viewModel.birthDate.length == 6 &&
                 viewModel.gender.isNotEmpty
                 ? viewModel.nextStep
                 : null,
