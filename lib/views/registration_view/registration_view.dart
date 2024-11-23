@@ -15,7 +15,9 @@ class RegistrationView extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: AppColors.black,
               elevation: 0,
-              leading: IconButton(
+              leading: viewModel.currentStep == 3 // 마지막 단계일 때
+                  ? null // 백버튼 숨김
+                  : IconButton(
                 icon: Icon(Icons.arrow_back, color: AppColors.white),
                 onPressed: () {
                   if (viewModel.currentStep == 0) {

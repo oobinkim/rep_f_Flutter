@@ -34,7 +34,7 @@ class Completion extends StatelessWidget {
           ),
           SizedBox(height: 16),
           Text(
-            "함께하기 전에 몇 가지만 알려주시면 서비스 이용에 도움이 됩니다.",
+            "함께하기 전에 몇 가지만 알려주시면 \n 서비스 이용에 도움드릴 수 있어요",
             style: TextStyle(
               fontSize: 16,
               color: AppColors.white,
