@@ -46,32 +46,38 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: _controller,
-      textInputAction: widget.textInputAction, // TextInputAction 적용
-      decoration: InputDecoration(
-        hintText: _controller.text.isEmpty ? widget.placeholder : null,
-        hintStyle: TextStyle(color: AppColors.lightGray),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.lightGray, width: 1.0),
-          borderRadius: BorderRadius.circular(8.0),
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: 56), // 텍스트 필드 높이 고정
+      child: TextField(
+        controller: _controller,
+        textInputAction: widget.textInputAction, // TextInputAction 적용
+        decoration: InputDecoration(
+          hintText: _controller.text.isEmpty ? widget.placeholder : null,
+          hintStyle: TextStyle(color: AppColors.hintGray),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.borderGray, width: 1.0),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.lightGreen, width: 2.0),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          counterText: "",
+          filled: true,
+          fillColor: AppColors.darkGray, // 텍스트 필드 내부 배경색
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.lightGray, width: 2.0),
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        counterText: "",
+        cursorColor: AppColors.lightGreen, // 커서 색상
+        style: TextStyle(color: AppColors.white), // 입력 텍스트 색상
+        keyboardType: widget.keyboardType,
+        maxLength: widget.maxLength > 0 ? widget.maxLength : null,
+        obscureText: widget.obscureText,
+        inputFormatters: [
+          widget.allowNumbers
+              ? FilteringTextInputFormatter.allow(RegExp(r'[0-9]')) // 숫자만 허용
+              : FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Zㄱ-ㅎ가-힣]')), // 한글 및 영어만 허용
+        ],
+        onChanged: widget.onChanged,
       ),
-      style: TextStyle(color: Colors.white),
-      keyboardType: widget.keyboardType,
-      maxLength: widget.maxLength > 0 ? widget.maxLength : null,
-      obscureText: widget.obscureText,
-      inputFormatters: [
-        widget.allowNumbers
-            ? FilteringTextInputFormatter.allow(RegExp(r'[0-9]')) // 숫자만 허용
-            : FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Zㄱ-ㅎ가-힣]')), // 한글 및 영어만 허용
-      ],
-      onChanged: widget.onChanged,
     );
   }
 }

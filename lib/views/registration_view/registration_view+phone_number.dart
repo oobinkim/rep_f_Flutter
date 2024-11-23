@@ -24,24 +24,23 @@ class Step2PhoneNumber extends StatelessWidget {
           OutlinedTextField(
             placeholder: "휴대폰 번호",
             allowNumbers: true,
-            keyboardType: TextInputType.text,
-
+            keyboardType: TextInputType.number,
+            maxLength: 11,
             onChanged: (value) {
-              viewModel.name = value;
+              viewModel.phoneNumber = value;
               viewModel.notifyListeners();
             },
           ),
           SizedBox(height: 16),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildCarrierOption(viewModel, "SKT"),
-              _buildCarrierOption(viewModel, "KT"),
-              _buildCarrierOption(viewModel, "LG U+"),
-              _buildCarrierOption(viewModel, "알뜰폰"),
+              _buildCarrierOption(viewModel, "SKT", isFirst: true, isLast: false),
+              _buildCarrierOption(viewModel, "KT", isFirst: false, isLast: false),
+              _buildCarrierOption(viewModel, "LG U+", isFirst: false, isLast: false),
+              _buildCarrierOption(viewModel, "알뜰폰", isFirst: false, isLast: true),
             ],
           ),
-          Spacer(),
+          Spacer(flex: 4),
           BarButton(
             text: "다음",
             isEnabled: viewModel.phoneNumber.isNotEmpty && viewModel.carrier.isNotEmpty,
@@ -53,29 +52,45 @@ class Step2PhoneNumber extends StatelessWidget {
             enabledTextColor: AppColors.black,
             disabledTextColor: AppColors.black,
           ),
+          Spacer(flex: 1)
         ],
       ),
     );
   }
 
-  Widget _buildCarrierOption(RegistrationViewModel viewModel, String carrier) {
+  Widget _buildCarrierOption(
+      RegistrationViewModel viewModel,
+      String carrier, {
+        required bool isFirst,
+        required bool isLast,
+      }) {
     final isSelected = viewModel.carrier == carrier;
 
-    return GestureDetector(
-      onTap: () {
-        viewModel.carrier = carrier;
-        viewModel.notifyListeners();
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        decoration: BoxDecoration(
-          border: Border.all(color: isSelected ? AppColors.lightGreen : AppColors.lightGray),
-          borderRadius: BorderRadius.circular(8),
-          color: isSelected ? AppColors.lightGreen : AppColors.black,
-        ),
-        child: Text(
-          carrier,
-          style: TextStyle(color: isSelected ? AppColors.black : AppColors.white),
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          viewModel.carrier = carrier;
+          viewModel.notifyListeners();
+        },
+        child: Container(
+          height: 48, // 버튼 높이
+          decoration: BoxDecoration(
+            color: isSelected ? AppColors.lightGray : AppColors.darkGray,
+            border: Border.all(color: AppColors.lightGray),
+            borderRadius: BorderRadius.horizontal(
+              left: isFirst ? Radius.circular(8.0) : Radius.zero,
+              right: isLast ? Radius.circular(8.0) : Radius.zero,
+            ), // 왼쪽 끝, 오른쪽 끝만 둥글게 설정
+          ),
+          child: Center(
+            child: Text(
+              carrier,
+              style: TextStyle(
+                color: isSelected ? AppColors.white : AppColors.hintGray,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
       ),
     );
