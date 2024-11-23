@@ -9,6 +9,7 @@ class OutlinedTextField extends StatefulWidget {
   final ValueChanged<String>? onChanged; // 값 변경 콜백
   final bool obscureText; // 텍스트 가림 여부
   final bool allowNumbers; // 숫자 허용 여부
+  final TextInputAction textInputAction; // 입력 액션 설정
 
   const OutlinedTextField({
     Key? key,
@@ -18,6 +19,7 @@ class OutlinedTextField extends StatefulWidget {
     this.onChanged,
     this.obscureText = false,
     this.allowNumbers = false, // 기본값: 숫자 비허용
+    this.textInputAction = TextInputAction.done, // 기본값: 완료
   }) : super(key: key);
 
   @override
@@ -46,6 +48,7 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
+      textInputAction: widget.textInputAction, // TextInputAction 적용
       decoration: InputDecoration(
         hintText: _controller.text.isEmpty ? widget.placeholder : null,
         hintStyle: TextStyle(color: AppColors.lightGray),
