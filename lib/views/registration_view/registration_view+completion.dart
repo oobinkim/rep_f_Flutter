@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../share/app_color.dart';
 import '../../widgets/bar_button.dart';
 
-class Step4Completion extends StatelessWidget {
+class Completion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<RegistrationViewModel>(context, listen: false);
@@ -16,7 +16,12 @@ class Step4Completion extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.celebration, size: 100, color: AppColors.lightGreen),
+          // PNG 이미지를 사용하여 파티 팝퍼 표시
+          Image.asset(
+            'assets/party_popper.png', // PNG 이미지 경로
+            width: 100, // 이미지 너비
+            height: 100, // 이미지 높이
+          ),
           SizedBox(height: 24),
           Text(
             "인증에 성공했습니다!",
@@ -53,8 +58,8 @@ class Step4Completion extends StatelessWidget {
                   // Firestore에 기본 데이터 저장
                   await viewModel.register(uid);
 
-                  // ToDO: 성공 후 프로필 설정 화면으로 이동
-                 // Navigator.pushReplacementNamed(context, '/profile');
+                  // TODO: 성공 후 프로필 설정 화면으로 이동
+                  // Navigator.pushReplacementNamed(context, '/profile');
                 } else {
                   throw Exception("UID 생성 실패");
                 }

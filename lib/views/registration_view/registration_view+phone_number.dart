@@ -5,7 +5,7 @@ import '../../widgets/bar_button.dart';
 import '../../widgets/outlined_textField.dart';
 import '../../share/app_color.dart';
 
-class Step2PhoneNumber extends StatelessWidget {
+class PhoneNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<RegistrationViewModel>(context, listen: false);

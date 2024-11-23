@@ -5,7 +5,7 @@ import '../../viewmodels/registration_viewmodel.dart';
 import '../../widgets/bar_button.dart';
 import '../../share/app_color.dart';
 
-class Step3AuthCode extends StatelessWidget {
+class AuthCode extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<RegistrationViewModel>(context, listen: false);

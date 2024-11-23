@@ -33,10 +33,10 @@ class RegistrationView extends StatelessWidget {
               controller: viewModel.pageController,
               physics: NeverScrollableScrollPhysics(),
               children: [
-                Step1PersonalInfo(),
-                Step2PhoneNumber(),
-                Step3AuthCode(),
-                Step4Completion(),
+                PersonalInfo(),
+                PhoneNumber(),
+                AuthCode(),
+                Completion(),
               ],
             ),
           );

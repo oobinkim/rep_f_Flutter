@@ -5,7 +5,7 @@ import '../../widgets/bar_button.dart';
 import '../../widgets/outlined_textField.dart';
 import '../../share/app_color.dart';
 
-class Step1PersonalInfo extends StatelessWidget {
+class PersonalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<RegistrationViewModel>(context);
