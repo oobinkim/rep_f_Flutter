@@ -37,7 +37,7 @@ class ProfileView extends StatelessWidget {
                   _buildProgressIndicator(),
                   SizedBox(height: 24),
                   Text(
-                    "랩프에 온 목적은...",
+                    "당신은 누구인가요?",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -49,16 +49,15 @@ class ProfileView extends StatelessWidget {
                     children: [
                       _buildOption(
                         icon: Icons.water_drop,
-                        label: "분양 하려고요",
-                        isSelected: viewModel.selectedPurpose == "분양 하려고요",
-                        onTap: () => viewModel.selectPurpose("분양 하려고요"),
+                        label: "브리더/업체",
+                        isSelected: viewModel.selectedPurpose == "브리더/업체",
+                        onTap: () => viewModel.selectPurpose("브리더/업체"),
                       ),
                       SizedBox(width: 16),
                       _buildOption(
-                        icon: Icons.breakfast_dining,
-                        label: "분양 받고 싶어요",
-                        isSelected: viewModel.selectedPurpose == "분양 받고 싶어요",
-                        onTap: () => viewModel.selectPurpose("분양 받고 싶어요"),
+                        icon: Icons.breakfast_dining,자
+                        isSelected: viewModel.selectedPurpose == "일반사육자",
+                        onTap: () => viewModel.selectPurpose("일반사육자"),
                       ),
                     ],
                   ),
