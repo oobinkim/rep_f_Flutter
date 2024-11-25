@@ -88,7 +88,7 @@ class ProfileView extends StatelessWidget {
 
   Widget _buildProgressIndicator() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(12), // 끝을 둥글게 설정
+      borderRadius: BorderRadius.circular(12),
       child: Container(
         height: 6,
         child: Row(
