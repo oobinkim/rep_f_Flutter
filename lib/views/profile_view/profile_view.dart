@@ -19,7 +19,7 @@ class ProfileView extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () {
-                    print("건너뛰기 눌림");
+                    print("건너뛰기버튼");
                   },
                   child: Text(
                     "건너뛰기",
