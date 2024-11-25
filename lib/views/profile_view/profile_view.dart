@@ -87,19 +87,22 @@ class ProfileView extends StatelessWidget {
   }
 
   Widget _buildProgressIndicator() {
-    return Container(
-      height: 6,
-      child: Row(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(color: AppColors.lightGreen),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(color: AppColors.darkGray),
-          ),
-        ],
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12), // 끝을 둥글게 설정
+      child: Container(
+        height: 6,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(color: AppColors.lightGreen),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(color: AppColors.darkGray),
+            ),
+          ],
+        ),
       ),
     );
   }
