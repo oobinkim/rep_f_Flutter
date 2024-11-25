@@ -62,7 +62,7 @@ class ProfileView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  Spacer(flex: 3), // 위쪽 공간을 줄여서 버튼을 올립니다
                   BarButton(
                     text: "다음",
                     isEnabled: viewModel.isPurposeSelected,
@@ -76,7 +76,7 @@ class ProfileView extends StatelessWidget {
                     enabledTextColor: AppColors.black,
                     disabledTextColor: AppColors.black,
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 32), // 버튼과 하단 간격 추가
                 ],
               ),
             ),
