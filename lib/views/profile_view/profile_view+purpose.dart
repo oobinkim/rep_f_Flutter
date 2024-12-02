@@ -22,7 +22,7 @@ class ProfilePurpose extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(flex: 1, child: Container(color: AppColors.lightGreen)),
-                  Expanded(flex: 3, child: Container(color: AppColors.darkGray)),
+                  Expanded(flex: 3, child: Container(color: AppColors.purposeButtonGrey)),
                 ],
               ),
             ),
@@ -76,8 +76,8 @@ class ProfilePurpose extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: viewModel.selectedPurpose == label
-                  ? AppColors.lightGreen // 선택된 경우 라이트그린 테두리
-                  : Colors.transparent, // 선택되지 않은 경우 투명 테두리
+                  ? AppColors.lightGreen
+                  : Colors.transparent,
               width: 2,
             ),
           ),

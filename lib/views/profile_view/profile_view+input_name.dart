@@ -3,11 +3,12 @@ import 'package:provider/provider.dart';
 import '../../viewmodels/profile_viewmodel.dart';
 import '../../share/app_color.dart';
 import '../../widgets/bar_button.dart';
+import '../../widgets/outlined_textField.dart';
 
 class InputNameStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<ProfileViewModel>(context, listen: false);
+    final viewModel = Provider.of<ProfileViewModel>(context);
 
     final String placeholder = viewModel.selectedPurpose == "브리더/업체"
         ? "업체명 또는 브리더명을 입력하세요"
@@ -45,18 +46,12 @@ class InputNameStep extends StatelessWidget {
           SizedBox(height: 32),
 
           // Input Field
-          TextField(
-            decoration: InputDecoration(
-              hintText: placeholder,
-              hintStyle: TextStyle(color: AppColors.hintGray),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.lightGreen),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: AppColors.lightGreen),
-              ),
-            ),
-            style: TextStyle(color: AppColors.white),
+          OutlinedTextField(
+            placeholder: placeholder,
+            keyboardType: TextInputType.text,
+            allowNumbers: false,
+            maxLength: 20,
+            textInputAction: TextInputAction.done,
             onChanged: (value) {
               if (viewModel.selectedPurpose == "브리더/업체") {
                 viewModel.updateNickName(value);
@@ -74,8 +69,12 @@ class InputNameStep extends StatelessWidget {
                 ? viewModel.NickName.isNotEmpty
                 : viewModel.personalName.isNotEmpty),
             onPressed: () {
-              print("이름 입력 완료");
-              viewModel.nextStep();
+              if ((viewModel.selectedPurpose == "브리더/업체" &&
+                  viewModel.NickName.isNotEmpty) ||
+                  (viewModel.selectedPurpose == "개인사육자" &&
+                      viewModel.personalName.isNotEmpty)) {
+                viewModel.nextStep();
+              }
             },
             enabledColor: AppColors.lightGreen,
             disabledColor: AppColors.darkGreen,

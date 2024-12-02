@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ProfileViewModel extends ChangeNotifier {
-  int currentStep = 0; // 현재 단계
-  String selectedPurpose = ""; // 선택한 목적 (브리더/업체 or 개인사육자)
-  String businessNumber = ""; // 완성된 사업자 등록번호
-  String firstPart = ""; // 사업자번호 첫 번째 입력
-  String middlePart = ""; // 사업자번호 중간 입력
-  String lastPart = ""; // 사업자번호 마지막 입력
-  String NickName = ""; // 브리더 이름
-  String personalName = ""; // 개인사육자 이름
+  int currentStep = 0;
+  String selectedPurpose = "";
+  String businessNumber = "";
+  String firstPart = "";
+  String middlePart = "";
+  String lastPart = "";
+  String NickName = "";
+  String personalName = "";
+  String selectedSpecies = ""; // 단일 선택으로 변경
   PageController pageController = PageController();
 
   void nextStep() {
@@ -47,13 +48,12 @@ class ProfileViewModel extends ChangeNotifier {
       lastPart = value;
     }
 
-    // 모든 파트가 입력되었는지 확인 후 businessNumber 업데이트
     if (firstPart.length == 3 &&
         middlePart.length == 2 &&
         lastPart.length == 5) {
-      businessNumber = "$firstPart$middlePart$lastPart"; // '-' 없이 저장
+      businessNumber = "$firstPart$middlePart$lastPart";
     } else {
-      businessNumber = ""; // 입력이 완성되지 않으면 초기화
+      businessNumber = "";
     }
     notifyListeners();
   }
@@ -65,6 +65,11 @@ class ProfileViewModel extends ChangeNotifier {
 
   void updatePersonalName(String name) {
     personalName = name;
+    notifyListeners();
+  }
+
+  void updateSelectedSpecies(String species) {
+    selectedSpecies = species; // 단일 선택 처리
     notifyListeners();
   }
 
