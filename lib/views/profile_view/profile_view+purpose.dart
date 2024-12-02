@@ -22,7 +22,7 @@ class ProfilePurpose extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(flex: 1, child: Container(color: AppColors.lightGreen)),
-                  Expanded(flex: 3, child: Container(color: AppColors.purposeButtonGrey)),
+                  Expanded(flex: 3, child: Container(color: AppColors.darkGray)),
                 ],
               ),
             ),
@@ -64,6 +64,7 @@ class ProfilePurpose extends StatelessWidget {
 
   Widget _buildOption(BuildContext context, String label, IconData icon) {
     final viewModel = Provider.of<ProfileViewModel>(context);
+    final bool isSelected = viewModel.selectedPurpose == label;
     return Expanded(
       child: GestureDetector(
         onTap: () {
@@ -72,7 +73,7 @@ class ProfilePurpose extends StatelessWidget {
         child: Container(
           height: 180,
           decoration: BoxDecoration(
-            color: AppColors.darkGray,
+            color: isSelected ? AppColors.purposeButtonGrey : AppColors.darkGray,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: viewModel.selectedPurpose == label
