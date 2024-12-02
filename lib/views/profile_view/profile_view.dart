@@ -11,20 +11,29 @@ class ProfileView extends StatelessWidget {
       create: (_) => ProfileViewModel(),
       child: Consumer<ProfileViewModel>(
         builder: (context, viewModel, child) {
+          // 동적으로 PageView의 children 생성
+          final pages = [
+            ProfilePurpose(),
+            if (viewModel.selectedPurpose == "브리더/업체") BusinessNumberStep(),
+            InputNameStep(),
+            if (viewModel.selectedPurpose == "브리더/업체") SpeciesSelectionStep(),
+            CompletionStep(),
+          ];
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: AppColors.black,
               elevation: 0,
-              leading: viewModel.currentStep > 0
+              leading: (viewModel.currentStep > 0 && viewModel.currentStep != pages.length - 1)
                   ? IconButton(
                 icon: Icon(Icons.arrow_back, color: AppColors.white),
                 onPressed: () {
                   viewModel.previousStep();
                 },
               )
-                  : null,
+                  : null, // CompletionStep에서는 leading 제거
               actions: [
-                if (viewModel.currentStep != 3) // 마지막 단계가 아닐 때
+                if (viewModel.currentStep != pages.length - 1) // 마지막 단계가 아닐 때
                   TextButton(
                     onPressed: () {
                       print("건너뛰기 눌림");
@@ -40,12 +49,7 @@ class ProfileView extends StatelessWidget {
             body: PageView(
               controller: viewModel.pageController,
               physics: NeverScrollableScrollPhysics(), // 스와이프로 이동 금지
-              children: [
-                ProfilePurpose(),
-                if (viewModel.selectedPurpose == "브리더/업체") BusinessNumberStep(),
-                InputNameStep(),
-                SpeciesSelectionStep(),
-              ],
+              children: pages,
             ),
           );
         },

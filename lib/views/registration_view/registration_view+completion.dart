@@ -58,7 +58,6 @@ class Completion extends StatelessWidget {
                   // Firestore에 기본 데이터 저장
                   await viewModel.register(uid);
 
-                  // TODO: 성공 후 프로필 설정 화면으로 이동
                    Navigator.pushReplacementNamed(context, '/profile');
                 } else {
                   throw Exception("UID 생성 실패");
