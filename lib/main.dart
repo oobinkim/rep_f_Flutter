@@ -25,7 +25,6 @@ void main() async {
         ),
       );
     } else {
-      // iOS와 Android 환경은 기본 설정 사용
       await Firebase.initializeApp();
     }
     print('Firebase 초기화 성공');
@@ -48,15 +47,31 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Rep : f',
         theme: ThemeData(
+          fontFamily: 'Pretendard',
+          textTheme: const TextTheme(
+            bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+            bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+            titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+            titleTextStyle: TextStyle(
+              fontFamily: 'Pretendard',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          scaffoldBackgroundColor: Colors.black, // 기본 배경색
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
         ),
         initialRoute: '/splash',
         routes: {
           '/splash': (context) => const SplashView(),
           '/agreement': (context) => AgreementView(),
           '/registration': (context) => RegistrationView(),
-          '/profile' : (context) => ProfileView(),
+          '/profile': (context) => ProfileView(),
         },
       ),
     );

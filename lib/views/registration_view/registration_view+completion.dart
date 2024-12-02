@@ -18,7 +18,7 @@ class Completion extends StatelessWidget {
         children: [
           // PNG 이미지를 사용하여 파티 팝퍼 표시
           Image.asset(
-            'assets/party_popper.png', // PNG 이미지 경로
+            'assets/images/party_popper.png', // PNG 이미지 경로
             width: 100, // 이미지 너비
             height: 100, // 이미지 높이
           ),

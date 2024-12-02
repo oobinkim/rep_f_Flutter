@@ -21,7 +21,7 @@ class SplashView extends StatelessWidget {
           // 로고 이미지
           Center(
             child: Image.asset(
-              'assets/logo.png',
+              'assets/images/logo.png',
               width: screenSize.width,
               height: screenSize.height,
               fit: BoxFit.cover,

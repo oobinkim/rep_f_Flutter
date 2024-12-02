@@ -20,7 +20,7 @@ class CompletionStep extends StatelessWidget {
           children: [
             // 이모지
             Image.asset(
-              'assets/clap.png', // PNG 이미지 경로
+              'assets/images/clap.png', // PNG 이미지 경로
               width: 100, // 이미지 너비
               height: 100, // 이미지 높이
             ),
