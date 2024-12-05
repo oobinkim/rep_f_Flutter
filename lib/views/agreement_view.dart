@@ -48,7 +48,7 @@ class _AgreementViewState extends State<AgreementView> {
                 },
               ),
             ),
-            body: Padding(
+            body: SingleChildScrollView( // SingleChildScrollView로 전체 화면 감싸기
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,7 +138,7 @@ class _AgreementViewState extends State<AgreementView> {
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                  SizedBox(height: 52),
+                  SizedBox(height: 30),
                   BarButton(
                     text: "다음",
                     isEnabled: termsChecked && privacyChecked,
@@ -152,7 +152,7 @@ class _AgreementViewState extends State<AgreementView> {
                     enabledTextColor: AppColors.black,
                     disabledTextColor: AppColors.black,
                   ),
-                  Spacer(),
+                  SizedBox(height: 16),
                 ],
               ),
             ),
