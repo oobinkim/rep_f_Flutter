@@ -39,7 +39,7 @@ class InputNameStep extends StatelessWidget {
             placeholder,
             style: TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
               color: AppColors.white,
             ),
           ),

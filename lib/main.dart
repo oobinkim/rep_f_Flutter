@@ -47,6 +47,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Rep : f',
         theme: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           fontFamily: 'Pretendard',
           textTheme: const TextTheme(
             bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),

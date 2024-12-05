@@ -18,7 +18,8 @@ class PhoneNumber extends StatelessWidget {
           SizedBox(height: 20),
           Text(
             "휴대폰 번호를 입력해주세요",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.white),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600,
+                color: AppColors.white),
           ),
           SizedBox(height: 24),
           OutlinedTextField(

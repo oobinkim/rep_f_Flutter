@@ -19,7 +19,7 @@ class PersonalInfo extends StatelessWidget {
             "본인 확인이 필요해요",
             style: TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
               color: AppColors.white,
             ),
           ),
@@ -31,7 +31,7 @@ class PersonalInfo extends StatelessWidget {
                 "이름",
                 style: TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                   color: AppColors.white,
                 ),
               ),
@@ -56,7 +56,7 @@ class PersonalInfo extends StatelessWidget {
                 "주민등록번호",
                 style: TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w500,
                   color: AppColors.white,
                 ),
               ),
@@ -83,7 +83,7 @@ class PersonalInfo extends StatelessWidget {
                     "-",
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
                       color: AppColors.white,
                     ),
                   ),

@@ -32,7 +32,9 @@ class ProfilePurpose extends StatelessWidget {
           // Title
           Text(
             "당신은 누구신가요?",
-            style: TextStyle(color: AppColors.white, fontSize: 24),
+            style: TextStyle(color: AppColors.white,
+                fontSize: 24,
+            fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 24),
 
@@ -95,6 +97,7 @@ class ProfilePurpose extends StatelessWidget {
                 label,
                 style: TextStyle(
                   fontSize: 18,
+                  fontWeight: FontWeight.w500,
                   color: AppColors.white,
                 ),
               ),

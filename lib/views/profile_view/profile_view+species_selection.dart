@@ -38,7 +38,9 @@ class SpeciesSelectionStep extends StatelessWidget {
           // Title
           Text(
             "주로 브리딩하는 종이 있나요?",
-            style: TextStyle(color: AppColors.white, fontSize: 24),
+            style: TextStyle(color: AppColors.white,
+                fontSize: 24,
+            fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 32),
 
@@ -66,6 +68,7 @@ class SpeciesSelectionStep extends StatelessWidget {
                     species,
                     style: TextStyle(
                       color: isSelected ? AppColors.black : AppColors.white,
+                      fontWeight: FontWeight.w500,
                       fontSize: 14,
                     ),
                   ),
@@ -99,6 +102,7 @@ class SpeciesSelectionStep extends StatelessWidget {
                     color: viewModel.selectedSpecies == "아직 없어요"
                         ? AppColors.black
                         : AppColors.white,
+                    fontWeight: FontWeight.w500,
                     fontSize: 14,
                   ),
                 ),

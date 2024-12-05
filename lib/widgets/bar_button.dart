@@ -37,7 +37,7 @@ class BarButton extends StatelessWidget {
             style: TextStyle(
               color: isEnabled ? enabledTextColor : disabledTextColor,
               fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),

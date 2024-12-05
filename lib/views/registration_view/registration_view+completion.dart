@@ -27,7 +27,7 @@ class Completion extends StatelessWidget {
             "인증에 성공했습니다!",
             style: TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
               color: AppColors.white,
             ),
             textAlign: TextAlign.center,
@@ -37,6 +37,7 @@ class Completion extends StatelessWidget {
             "함께하기 전에 몇 가지만 알려주시면 \n 서비스 이용에 도움드릴 수 있어요",
             style: TextStyle(
               fontSize: 16,
+              fontWeight: FontWeight.w500,
               color: AppColors.white,
             ),
             textAlign: TextAlign.center,

@@ -18,13 +18,16 @@ class AuthCode extends StatelessWidget {
           SizedBox(height: 20),
           Text(
             "인증번호를 입력해주세요",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppColors.white),
+            style: TextStyle(fontSize: 24,
+                fontWeight: FontWeight.w600,
+                color: AppColors.white),
           ),
           SizedBox(height: 24),
           TextField(
             decoration: InputDecoration(
               hintText: "6자리 코드", // 플레이스홀더 텍스트
-              hintStyle: TextStyle(color: AppColors.hintGray), // 플레이스홀더 색상
+              hintStyle: TextStyle(color: AppColors.hintGray,
+              fontWeight: FontWeight.w500), // 플레이스홀더 색상
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: AppColors.lightGreen), // 활성화된 상태에서 밑줄 색상
               ),
@@ -33,7 +36,8 @@ class AuthCode extends StatelessWidget {
               ),
             ),
             cursorColor: AppColors.lightGreen, // 커서 색상
-            style: TextStyle(color: AppColors.white), // 입력 텍스트 색상
+            style: TextStyle(color: AppColors.white,
+            fontWeight: FontWeight.w500), // 입력 텍스트 색상
             keyboardType: TextInputType.number, // 숫자 전용 키보드
             inputFormatters: [
               LengthLimitingTextInputFormatter(6), // 6글자 제한

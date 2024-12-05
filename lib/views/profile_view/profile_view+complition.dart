@@ -34,7 +34,7 @@ class CompletionStep extends StatelessWidget {
                 color: AppColors.white,
                 fontSize: 24,
                 height: 1.1,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
               ),
               textAlign: TextAlign.center,
             ),
@@ -46,6 +46,7 @@ class CompletionStep extends StatelessWidget {
               style: TextStyle(
                 color: AppColors.white,
                 fontSize: 16,
+                fontWeight: FontWeight.w500,
               ),
               textAlign: TextAlign.center,
             ),

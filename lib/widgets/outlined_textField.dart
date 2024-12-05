@@ -53,7 +53,8 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
         textInputAction: widget.textInputAction, // TextInputAction 적용
         decoration: InputDecoration(
           hintText: _controller.text.isEmpty ? widget.placeholder : null,
-          hintStyle: TextStyle(color: AppColors.hintGray),
+          hintStyle: TextStyle(color: AppColors.hintGray,
+          fontWeight: FontWeight.w500),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.borderGray, width: 1.0),
             borderRadius: BorderRadius.circular(8.0),
@@ -67,7 +68,8 @@ class _OutlinedTextFieldState extends State<OutlinedTextField> {
           fillColor: AppColors.darkGray, // 텍스트 필드 내부 배경색
         ),
         cursorColor: AppColors.lightGreen, // 커서 색상
-        style: TextStyle(color: AppColors.white), // 입력 텍스트 색상
+        style: TextStyle(color: AppColors.white,
+        fontWeight: FontWeight.w500), // 입력 텍스트 색상
         keyboardType: widget.keyboardType,
         maxLength: widget.maxLength > 0 ? widget.maxLength : null,
         obscureText: widget.obscureText,

@@ -35,7 +35,7 @@ class BusinessNumberStep extends StatelessWidget {
             "사업자 등록 번호를 알려주세요!",
             style: TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w600,
               color: AppColors.white,
             ),
           ),

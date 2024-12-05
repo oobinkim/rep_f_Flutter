@@ -40,7 +40,8 @@ class ProfileView extends StatelessWidget {
                     },
                     child: Text(
                       "건너뛰기",
-                      style: TextStyle(color: AppColors.lightGray),
+                      style: TextStyle(color: AppColors.lightGray,
+                      fontWeight: FontWeight.w500),
                     ),
                   ),
               ],
