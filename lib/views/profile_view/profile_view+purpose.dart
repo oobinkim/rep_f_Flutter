@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../viewmodels/profile_viewmodel.dart';
 import '../../share/app_color.dart';
 import '../../widgets/bar_button.dart';
+import '../../widgets/grid_button.dart';
+import '../../viewmodels/profile_viewmodel.dart';
 
 class ProfilePurpose extends StatelessWidget {
   @override
@@ -32,18 +33,30 @@ class ProfilePurpose extends StatelessWidget {
           // Title
           Text(
             "당신은 누구신가요?",
-            style: TextStyle(color: AppColors.white,
-                fontSize: 24,
-            fontWeight: FontWeight.w600),
+            style: TextStyle(
+              color: AppColors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           SizedBox(height: 24),
 
           // Options
           Row(
             children: [
-              _buildOption(context, "브리더/업체", Icons.business),
+              GridButton(
+                label: "브리더/업체",
+                icon: Icons.business,
+                isSelected: viewModel.selectedPurpose == "브리더/업체",
+                onTap: () => viewModel.selectPurpose("브리더/업체"),
+              ),
               SizedBox(width: 16),
-              _buildOption(context, "개인사육자", Icons.person),
+              GridButton(
+                label: "개인사육자",
+                icon: Icons.person,
+                isSelected: viewModel.selectedPurpose == "개인사육자",
+                onTap: () => viewModel.selectPurpose("개인사육자"),
+              ),
             ],
           ),
           Spacer(),
@@ -60,50 +73,6 @@ class ProfilePurpose extends StatelessWidget {
           ),
           SizedBox(height: 32),
         ],
-      ),
-    );
-  }
-
-  Widget _buildOption(BuildContext context, String label, IconData icon) {
-    final viewModel = Provider.of<ProfileViewModel>(context);
-    final bool isSelected = viewModel.selectedPurpose == label;
-    return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          viewModel.selectPurpose(label);
-        },
-        child: Container(
-          height: 180,
-          decoration: BoxDecoration(
-            color: isSelected ? AppColors.purposeButtonGrey : AppColors.darkGray,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: viewModel.selectedPurpose == label
-                  ? AppColors.lightGreen
-                  : Colors.transparent,
-              width: 2,
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                size: 36,
-                color: AppColors.lightGray,
-              ),
-              SizedBox(height: 16),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.white,
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
