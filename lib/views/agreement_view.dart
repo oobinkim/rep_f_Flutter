@@ -138,7 +138,7 @@ class _AgreementViewState extends State<AgreementView> {
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                  const Spacer(flex: 1),
+                  const Spacer(),
                   BarButton(
                     text: "다음",
                     isEnabled: termsChecked && privacyChecked,
@@ -152,7 +152,7 @@ class _AgreementViewState extends State<AgreementView> {
                     enabledTextColor: AppColors.black,
                     disabledTextColor: AppColors.black,
                   ),
-                  Spacer(flex: 1),
+                  Spacer(),
                 ],
               ),
             ),
