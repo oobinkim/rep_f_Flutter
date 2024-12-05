@@ -83,8 +83,8 @@ class _AgreementViewState extends State<AgreementView> {
                     title: const Text(
                       "서비스 이용 약관 (필수)",
                       style: TextStyle(color: AppColors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
                     ),
                     controlAffinity: ListTileControlAffinity.leading,
                     value: termsChecked,
@@ -138,7 +138,7 @@ class _AgreementViewState extends State<AgreementView> {
                           fontWeight: FontWeight.w500),
                     ),
                   ),
-                  const Spacer(),
+                  SizedBox(height: 52),
                   BarButton(
                     text: "다음",
                     isEnabled: termsChecked && privacyChecked,
