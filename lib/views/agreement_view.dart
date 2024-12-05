@@ -48,7 +48,7 @@ class _AgreementViewState extends State<AgreementView> {
                 },
               ),
             ),
-            body: SingleChildScrollView( // SingleChildScrollView로 전체 화면 감싸기
+            body: SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,20 +139,25 @@ class _AgreementViewState extends State<AgreementView> {
                     ),
                   ),
                   SizedBox(height: 30),
-                  BarButton(
-                    text: "다음",
-                    isEnabled: termsChecked && privacyChecked,
-                    onPressed: termsChecked && privacyChecked
-                        ? () {
-                      viewModel.navigateToRegistration(context); // 회원가입 화면으로 이동
-                    }
-                        : null,
-                    enabledColor: AppColors.lightGreen,
-                    disabledColor: AppColors.darkGreen,
-                    enabledTextColor: AppColors.black,
-                    disabledTextColor: AppColors.black,
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0), // 여백 추가
+                      child: BarButton(
+                        text: "다음",
+                        isEnabled: termsChecked && privacyChecked,
+                        onPressed: termsChecked && privacyChecked
+                            ? () {
+                          viewModel.navigateToRegistration(context); // 회원가입 화면으로 이동
+                        }
+                            : null,
+                        enabledColor: AppColors.lightGreen,
+                        disabledColor: AppColors.darkGreen,
+                        enabledTextColor: AppColors.black,
+                        disabledTextColor: AppColors.black,
+                      ),
+                    ),
                   ),
-                  SizedBox(height: 16),
                 ],
               ),
             ),
