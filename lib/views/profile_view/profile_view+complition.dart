@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../viewmodels/profile_viewmodel.dart';
 import '../../services/registration_services/profile_services.dart';
 import '../../share/app_color.dart';
@@ -58,10 +59,24 @@ class CompletionStep extends StatelessWidget {
               isEnabled: true, // 버튼 항상 활성화
               onPressed: () async {
                 try {
-                  await ProfileService().saveProfile(viewModel); // 프로필 저장
-                  Navigator.pushReplacementNamed(context, "/home"); // 메인 화면으로 이동
+                  // FirebaseAuth로 현재 사용자 UID 가져오기
+                  final user = FirebaseAuth.instance.currentUser;
+
+                  if (user != null) {
+                    // UID 기반으로 프로필 저장
+                    await ProfileService().saveProfile(user.uid, viewModel);
+                    Navigator.pushReplacementNamed(context, "/home"); // 메인 화면으로 이동
+                  } else {
+                    throw Exception("사용자 인증 실패: UID를 가져올 수 없습니다.");
+                  }
                 } catch (e) {
                   print("데이터 저장 중 오류 발생: $e");
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("프로필 저장 중 오류가 발생했습니다."),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
                 }
               },
               enabledColor: AppColors.lightGreen,

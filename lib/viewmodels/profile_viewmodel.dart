@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ProfileViewModel extends ChangeNotifier {
@@ -74,4 +75,28 @@ class ProfileViewModel extends ChangeNotifier {
   }
 
   bool get isPurposeSelected => selectedPurpose.isNotEmpty;
+
+  // Firestore에 프로필 저장
+  Future<void> saveProfile(String uid) async {
+    try {
+      final profileData = {
+        'selectedPurpose': selectedPurpose,
+        'businessNumber': businessNumber,
+        'NickName': NickName,
+        'personalName': personalName,
+        'selectedSpecies': selectedSpecies,
+      };
+
+      await FirebaseFirestore.instance
+          .collection('users') // 상위 컬렉션
+          .doc(uid) // 사용자 문서
+          .collection('profile') // 하위 컬렉션
+          .doc('userProfile') // 프로필 문서
+          .set(profileData);
+
+      print("프로필 저장 성공: $profileData");
+    } catch (e) {
+      print("프로필 저장 실패: $e");
+    }
+  }
 }

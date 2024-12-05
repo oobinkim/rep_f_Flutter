@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'views/agreement_view.dart';
 import 'views/splash_view.dart';
 import 'views/profile_view/profile_view.dart';
+import 'views/home_view/home_view.dart';
 import 'views/registration_view/registration_view.dart';
 import 'viewmodels/splash_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
           '/agreement': (context) => AgreementView(),
           '/registration': (context) => RegistrationView(),
           '/profile': (context) => ProfileView(),
+          '/home': (context) => HomeView()
         },
       ),
     );
