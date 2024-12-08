@@ -39,6 +39,47 @@ class _HomeViewState extends State<HomeView> {
         padding: const EdgeInsets.symmetric(horizontal: 32.0), // 가로 여백 유지
         child: Column(
           children: [
+            // 이전, 오늘, 다음 버튼 영역
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios, color: AppColors.white),
+                  onPressed: () {
+                    print("이전 버튼 눌림");
+                  },
+                ),
+                GestureDetector(
+                  onTap: () {
+                    print("오늘 드롭다운 눌림");
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.calendar_today, color: AppColors.white, size: 16),
+                      SizedBox(width: 4),
+                      Text(
+                        "오늘",
+                        style: TextStyle(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Icon(Icons.arrow_drop_down, color: AppColors.white),
+                    ],
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.arrow_forward_ios, color: AppColors.white),
+                  onPressed: () {
+                    print("다음 버튼 눌림");
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+
             // 개체 추가 버튼
             GestureDetector(
               onTap: () {
@@ -88,7 +129,7 @@ class _HomeViewState extends State<HomeView> {
                     icon: Image.asset(
                       'assets/icon/water.png',
                       width: 48, // 아이콘 크기
-                      height:48,
+                      height: 48,
                     ),
                     isSelected: false,
                     onTap: () {
