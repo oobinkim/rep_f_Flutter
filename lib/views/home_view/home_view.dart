@@ -10,6 +10,11 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int _currentIndex = 0; // 현재 선택된 탭의 인덱스
 
+  /// 화면 전환 메서드
+  void navigateToRegisterReptile(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/register_reptile');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +27,8 @@ class _HomeViewState extends State<HomeView> {
           children: [
             TextButton(
               onPressed: () {
-                print("포트폴리오 버튼 눌림");
+                //TODO: 포트폴리오 화면
+                print("포트폴리오 눌림");
               },
               child: Text(
                 "포트폴리오 +",
@@ -83,7 +89,7 @@ class _HomeViewState extends State<HomeView> {
             // 개체 추가 버튼
             GestureDetector(
               onTap: () {
-                print("개체 추가 버튼 눌림");
+                navigateToRegisterReptile(context); // 화면 전환 호출
               },
               child: Container(
                 width: double.infinity,

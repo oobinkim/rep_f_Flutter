@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'views/agreement_view.dart';
 import 'views/splash_view.dart';
+import 'views/register_reptile_view/register_reptile_view.dart';
 import 'views/profile_view/profile_view.dart';
 import 'views/home_view/home_view.dart';
 import 'views/registration_view/registration_view.dart';
@@ -75,7 +76,8 @@ class MyApp extends StatelessWidget {
           '/agreement': (context) => AgreementView(),
           '/registration': (context) => RegistrationView(),
           '/profile': (context) => ProfileView(),
-          '/home': (context) => HomeView()
+          '/home': (context) => HomeView(),
+          '/register_reptile': (context) => RegisterReptileView(),
         },
       ),
     );
