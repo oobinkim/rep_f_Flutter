@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../share/app_color.dart';
 class GridButton extends StatelessWidget {
   final String label;
   final dynamic icon; // IconData 또는 Widget 타입 모두 지원
@@ -20,10 +20,10 @@ class GridButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: isSelected ? Colors.grey[700] : Colors.grey[800],
+          color: isSelected ? AppColors.purposeButtonGrey : AppColors.darkGray,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isSelected ? Colors.green : Colors.transparent,
+            color: isSelected ? AppColors.lightGreen : Colors.transparent,
             width: 2,
           ),
         ),
@@ -37,7 +37,7 @@ class GridButton extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Colors.white,
+                color: AppColors.white,
               ),
             ),
           ],
@@ -52,7 +52,7 @@ class GridButton extends StatelessWidget {
       return Icon(
         icon,
         size: 36,
-        color: Colors.white,
+        color: AppColors.white,
       );
     } else if (icon is Widget) {
       return icon; // 커스텀 위젯 반환 (Image, Svg 등)

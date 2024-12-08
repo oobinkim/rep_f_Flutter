@@ -44,18 +44,28 @@ class ProfilePurpose extends StatelessWidget {
           // Options
           Row(
             children: [
-              GridButton(
-                label: "브리더/업체",
-                icon: Icons.business,
-                isSelected: viewModel.selectedPurpose == "브리더/업체",
-                onTap: () => viewModel.selectPurpose("브리더/업체"),
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: 1, // 버튼의 가로:세로 비율
+                  child: GridButton(
+                    label: "브리더/업체",
+                    icon: Icons.business,
+                    isSelected: viewModel.selectedPurpose == "브리더/업체",
+                    onTap: () => viewModel.selectPurpose("브리더/업체"),
+                  ),
+                ),
               ),
               SizedBox(width: 16),
-              GridButton(
-                label: "개인사육자",
-                icon: Icons.person,
-                isSelected: viewModel.selectedPurpose == "개인사육자",
-                onTap: () => viewModel.selectPurpose("개인사육자"),
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: 1, // 버튼의 가로:세로 비율
+                  child: GridButton(
+                    label: "개인사육자",
+                    icon: Icons.person,
+                    isSelected: viewModel.selectedPurpose == "개인사육자",
+                    onTap: () => viewModel.selectPurpose("개인사육자"),
+                  ),
+                ),
               ),
             ],
           ),

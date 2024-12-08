@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../widgets/grid_button.dart';
 import '../../share/app_color.dart';
-import '../../widgets/grid_button.dart'; // GridButton을 임포트
 
 class HomeView extends StatefulWidget {
   @override
@@ -36,57 +36,18 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 32.0), // 가로 여백 유지
         child: Column(
           children: [
-            // 이전, 오늘, 다음 버튼 영역
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: AppColors.white),
-                  onPressed: () {
-                    print("이전 버튼 눌림");
-                  },
-                ),
-                GestureDetector(
-                  onTap: () {
-                    print("오늘 드롭다운 눌림");
-                  },
-                  child: Row(
-                    children: [
-                      Icon(Icons.calendar_today, color: AppColors.white, size: 16),
-                      SizedBox(width: 4),
-                      Text(
-                        "오늘",
-                        style: TextStyle(
-                          color: AppColors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Icon(Icons.arrow_drop_down, color: AppColors.white),
-                    ],
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward_ios, color: AppColors.white),
-                  onPressed: () {
-                    print("다음 버튼 눌림");
-                  },
-                ),
-              ],
-            ),
-            SizedBox(height: 16),
-            // 개체 등록 버튼
+            // 개체 추가 버튼
             GestureDetector(
               onTap: () {
-                print("개체 등록 버튼 눌림");
+                print("개체 추가 버튼 눌림");
               },
               child: Container(
                 width: double.infinity,
-                height: 200, // 세로 길이를 늘림
-                padding: EdgeInsets.all(24),
+                height: 176,
+                padding: EdgeInsets.all(16), // 내부 여백 조정
                 decoration: BoxDecoration(
                   color: AppColors.darkGray,
                   borderRadius: BorderRadius.circular(12),
@@ -94,13 +55,17 @@ class _HomeViewState extends State<HomeView> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add_circle, color: AppColors.white, size: 40),
-                    SizedBox(height: 8),
+                    Image.asset(
+                      'assets/icon/plus_circle.png',
+                      width: 48, // 아이콘 크기
+                      height: 48,
+                    ),
+                    SizedBox(height: 12), // 아이콘과 텍스트 사이 간격
                     Text(
                       "개체를 먼저 등록해주세요",
                       style: TextStyle(
                         color: AppColors.white,
-                        fontSize: 16,
+                        fontSize: 20, // 텍스트 크기
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -108,17 +73,23 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 16),
+
             // Grid 버튼 영역
             Expanded(
               child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
+                crossAxisCount: 2, // 2열로 배치
+                mainAxisSpacing: 24, // 버튼 간 세로 간격 증가
+                crossAxisSpacing: 24, // 버튼 간 가로 간격 증가
+                childAspectRatio: 1.0, // 정사각형으로 설정
                 children: [
                   GridButton(
                     label: "물 줬어요",
-                    icon: Icons.water_drop,
+                    icon: Image.asset(
+                      'assets/icon/water.png',
+                      width: 48, // 아이콘 크기
+                      height:48,
+                    ),
                     isSelected: false,
                     onTap: () {
                       print("물 줬어요 버튼 눌림");
@@ -126,7 +97,11 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   GridButton(
                     label: "먹이 줬어요",
-                    icon: Icons.fastfood,
+                    icon: Image.asset(
+                      'assets/icon/feed.png',
+                      width: 48, // 아이콘 크기
+                      height: 48,
+                    ),
                     isSelected: false,
                     onTap: () {
                       print("먹이 줬어요 버튼 눌림");
@@ -134,7 +109,11 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   GridButton(
                     label: "메이팅 했어요",
-                    icon: Icons.favorite,
+                    icon: Image.asset(
+                      'assets/icon/mating.png',
+                      width: 48, // 아이콘 크기
+                      height: 48,
+                    ),
                     isSelected: false,
                     onTap: () {
                       print("메이팅 했어요 버튼 눌림");
@@ -142,7 +121,11 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   GridButton(
                     label: "배변 했어요",
-                    icon: Icons.pets,
+                    icon: Image.asset(
+                      'assets/icon/poop.png',
+                      width: 48, // 아이콘 크기
+                      height: 48,
+                    ),
                     isSelected: false,
                     onTap: () {
                       print("배변 했어요 버튼 눌림");
@@ -150,7 +133,11 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   GridButton(
                     label: "탈피 했어요",
-                    icon: Icons.change_circle,
+                    icon: Image.asset(
+                      'assets/icon/skin.png',
+                      width: 48, // 아이콘 크기
+                      height: 48,
+                    ),
                     isSelected: false,
                     onTap: () {
                       print("탈피 했어요 버튼 눌림");
@@ -163,14 +150,14 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // 고정 타입 설정
-        backgroundColor: AppColors.black, // 배경색 검정으로 설정
-        selectedItemColor: AppColors.white, // 선택된 아이템 색상
-        unselectedItemColor: AppColors.lightGray, // 선택되지 않은 아이템 색상
-        currentIndex: _currentIndex, // 현재 선택된 탭의 인덱스
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.black,
+        selectedItemColor: AppColors.white,
+        unselectedItemColor: AppColors.lightGray,
+        currentIndex: _currentIndex,
         onTap: (int index) {
           setState(() {
-            _currentIndex = index; // 선택된 인덱스를 업데이트
+            _currentIndex = index;
           });
         },
         items: [

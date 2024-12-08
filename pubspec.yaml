@@ -58,10 +58,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/logo.png
-    - assets/images/party_popper.png
-    - assets/images/clap.png
-
+    - assets/images/
+    - assets/icon/
+    
   fonts:
     - family: Pretendard
       fonts:
