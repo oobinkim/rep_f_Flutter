@@ -48,6 +48,12 @@ class AuthCode extends StatelessWidget {
               viewModel.notifyListeners();
             },
           ),
+          Text(
+            "테스트용: 아무숫자나 6자리 입력해주세요",
+            style: TextStyle(fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: AppColors.lightGreen),
+          ),
           Spacer(),
           BarButton(
             text: "다음",
